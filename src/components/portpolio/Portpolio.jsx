@@ -159,54 +159,61 @@ const projects = {
             description: "Complete e-commerce platform with product listing, cart, checkout, and SSLCommerz payment integration. Designed REST APIs and managed backend using Express and MySQL.",
             tech: ["React", "Node.js", "Express.js", "MySQL", "SSLCommerz"],
             category: "webdev",
-            image: "https://placehold.co/600x400/06b6d4/ffffff?text=E-Commerce"
+            image: "https://placehold.co/600x400/06b6d4/ffffff?text=E-Commerce",
+            github: "https://github.com/A-k-a-sh/Full-stack-Ecommerce-website"
         },
         {
             title: "Social Media Web App",
             description: "Social media platform with user authentication, post creation, and real-time feeds. Used Appwrite as backend-as-a-service for auth, storage, and database.",
             tech: ["React", "Appwrite", "JavaScript", "CSS"],
             category: "webdev",
-            image: "https://placehold.co/600x400/8b5cf6/ffffff?text=Social+Media"
+            image: "https://placehold.co/600x400/8b5cf6/ffffff?text=Social+Media",
+            github: "https://github.com/A-k-a-sh/Social-Media-App"
         },
         {
             title: "Real-Time Messaging App",
             description: "Real-time chat application with one-on-one messaging functionality using Socket.io for WebSocket communication. Messages and user data stored in MongoDB.",
             tech: ["React", "Node.js", "Socket.io", "MongoDB"],
             category: "webdev",
-            image: "https://placehold.co/600x400/10b981/ffffff?text=Chat+App"
+            image: "https://placehold.co/600x400/10b981/ffffff?text=Chat+App",
+            github: "https://github.com/A-k-a-sh/Konnekt-Modern-Chat-application"
         },
         {
             title: "Diffusion Model Fine-tuning (DDPM)",
             description: "Fine-tuned a pretrained DDPM UNet (CelebA-HQ 256) on custom butterflies dataset using Hugging Face Diffusers. Implemented DDIM sampling for faster inference, gradient accumulation, and MSE noise-prediction training.",
             tech: ["PyTorch", "Hugging Face", "DDPM", "DDIM", "torchvision"],
             category: "ml",
-            image: "https://placehold.co/600x400/a855f7/ffffff?text=Diffusion+Model"
+            image: "https://placehold.co/600x400/a855f7/ffffff?text=Diffusion+Model",
+            github: "https://github.com/A-k-a-sh/ML-DL-Projects/tree/main/Deep%20learning/diffusion"
         },
         {
             title: "DCGAN Face Generation (CelebA)",
             description: "Built Deep Convolutional GAN to generate photorealistic celebrity faces using 200k+ aligned images. Implemented adversarial training, handled mode collapse and training instability with batch normalization and LeakyReLU.",
             tech: ["PyTorch", "GANs", "Deep Learning", "Computer Vision"],
             category: "ml",
-            image: "https://placehold.co/600x400/ec4899/ffffff?text=DCGAN"
+            image: "https://placehold.co/600x400/ec4899/ffffff?text=DCGAN",
+            github: "https://github.com/A-k-a-sh/ML-DL-Projects/tree/main/Deep%20learning/DcGan"
         },
         {
             title: "Video Action Recognition (UCF101)",
             description: "Implemented spatiotemporal CNN architecture for video classification using R(2+1)D model. Designed custom video pipeline with temporal sampling and frame extraction. Applied transfer learning with Kinetics-400 weights.",
             tech: ["PyTorch", "R(2+1)D CNN", "OpenCV", "3D Convolutions"],
             category: "ml",
-            image: "https://placehold.co/600x400/f59e0b/ffffff?text=Action+Recognition"
+            image: "https://placehold.co/600x400/f59e0b/ffffff?text=Action+Recognition",
+            github: "https://github.com/A-k-a-sh/ML-DL-Projects/tree/main/Deep%20learning/Video%20classification"
         },
         {
             title: "Heart Disease Prediction System",
             description: "Built multiple classification models to predict heart disease risk using 13 clinical features from 303 patients. Compared Logistic Regression, Random Forest, SVM, and Gradient Boosting. Achieved 85-90% accuracy.",
             tech: ["Python", "scikit-learn", "pandas", "NumPy", "Matplotlib"],
             category: "ml",
-            image: "https://placehold.co/600x400/10b981/ffffff?text=Heart+Disease+ML"
+            image: "https://placehold.co/600x400/10b981/ffffff?text=Heart+Disease+ML",
+            github: "https://github.com/A-k-a-sh/ML-DL-Projects/tree/main/Supervised%20learning/heart%20diseases%20prediction"
         }
     ]
 };
 // Project Card Component with Tilt and Flip
-const ProjectCard = ({ title, description, tech, category, image, index, x, y }) => {
+const ProjectCard = ({ title, description, tech, category, image, github, index, x, y }) => {
     const ref = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
     const [isFlipped, setIsFlipped] = useState(false);
@@ -334,22 +341,17 @@ const ProjectCard = ({ title, description, tech, category, image, index, x, y })
 
                         {/* Action Buttons */}
                         <div className="flex gap-3 pt-4">
-                            <motion.button
+                            <motion.a
+                                href={github}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors"
-                            >
-                                <ExternalLinkIcon size={16} />
-                                <span>Live Demo</span>
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="flex items-center gap-2 text-gray-400 hover:text-gray-300 transition-colors"
+                                className="flex items-center gap-2 text-gray-400 hover:text-gray-300 transition-colors cursor-pointer"
                             >
                                 <GithubIcon size={16} />
-                                <span>Code</span>
-                            </motion.button>
+                                <span>View Code</span>
+                            </motion.a>
                         </div>
                     </div>
                 </div>
