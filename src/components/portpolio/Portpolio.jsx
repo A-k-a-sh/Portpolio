@@ -176,18 +176,32 @@ const projects = {
             image: "https://placehold.co/600x400/10b981/ffffff?text=Chat+App"
         },
         {
-            title: "Heart Disease Prediction",
-            description: "Classification model to predict the risk of heart disease using clinical data. Performed data preprocessing, model selection (Logistic Regression, Random Forest), and evaluation.",
-            tech: ["Python", "scikit-learn", "pandas", "NumPy"],
+            title: "Diffusion Model Fine-tuning (DDPM)",
+            description: "Fine-tuned a pretrained DDPM UNet (CelebA-HQ 256) on custom butterflies dataset using Hugging Face Diffusers. Implemented DDIM sampling for faster inference, gradient accumulation, and MSE noise-prediction training.",
+            tech: ["PyTorch", "Hugging Face", "DDPM", "DDIM", "torchvision"],
             category: "ml",
-            image: "https://placehold.co/600x400/ec4899/ffffff?text=Heart+Disease+ML"
+            image: "https://placehold.co/600x400/a855f7/ffffff?text=Diffusion+Model"
         },
         {
-            title: "Bulldozer Price Predictor",
-            description: "Regression model to predict used bulldozer prices. Involved data cleaning, feature engineering, and model tuning. Evaluated using R² score and cross-validation.",
-            tech: ["Python", "scikit-learn", "pandas", "NumPy"],
+            title: "DCGAN Face Generation (CelebA)",
+            description: "Built Deep Convolutional GAN to generate photorealistic celebrity faces using 200k+ aligned images. Implemented adversarial training, handled mode collapse and training instability with batch normalization and LeakyReLU.",
+            tech: ["PyTorch", "GANs", "Deep Learning", "Computer Vision"],
             category: "ml",
-            image: "https://placehold.co/600x400/f59e0b/ffffff?text=Price+Predictor"
+            image: "https://placehold.co/600x400/ec4899/ffffff?text=DCGAN"
+        },
+        {
+            title: "Video Action Recognition (UCF101)",
+            description: "Implemented spatiotemporal CNN architecture for video classification using R(2+1)D model. Designed custom video pipeline with temporal sampling and frame extraction. Applied transfer learning with Kinetics-400 weights.",
+            tech: ["PyTorch", "R(2+1)D CNN", "OpenCV", "3D Convolutions"],
+            category: "ml",
+            image: "https://placehold.co/600x400/f59e0b/ffffff?text=Action+Recognition"
+        },
+        {
+            title: "Heart Disease Prediction System",
+            description: "Built multiple classification models to predict heart disease risk using 13 clinical features from 303 patients. Compared Logistic Regression, Random Forest, SVM, and Gradient Boosting. Achieved 85-90% accuracy.",
+            tech: ["Python", "scikit-learn", "pandas", "NumPy", "Matplotlib"],
+            category: "ml",
+            image: "https://placehold.co/600x400/10b981/ffffff?text=Heart+Disease+ML"
         }
     ]
 };
@@ -566,14 +580,16 @@ const PortPolio = () => {
         { name: "Machine Learning", level: 85, icon: Brain },
         { name: "Web Development", level: 90, icon: Code },
         { name: "Problem Solving", level: 92, icon: Brain },
-        { name: "Backend Development", level: 88, icon: Code }
+        { name: "Backend Development", level: 88, icon: Code },
+        { name: "DevOps & Microservices", level: 82, icon: Code }
     ];
 
     const technicalSkills = [
         "React", "React Native", "Node.js", "Express.js", "JavaScript",
         "Python", "C", "C++", "MySQL", "MongoDB",
         "Socket.io", "REST APIs", "scikit-learn", "PyTorch", "NumPy",
-        "pandas", "Git", "GitHub", "Docker", "Appwrite"
+        "pandas", "Git", "GitHub", "Docker", "Nginx", "CI/CD",
+        "Prometheus", "Grafana", "Elastic Stack", "Kibana", "Jaeger", "Appwrite"
     ];
 
     const navItems = [
@@ -837,18 +853,18 @@ const PortPolio = () => {
                                 solutions that combine elegant design with powerful functionality.
                             </p>
                             <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                                My journey includes solving 250+ problems on competitive programming platforms, participating in
+                                My journey includes solving 300+ problems on competitive programming platforms, participating in
                                 hackathons, and building real-world projects. I'm constantly learning and seeking opportunities
                                 to apply my skills in challenging environments.
                             </p>
 
                             <div className="grid grid-cols-2 gap-4 sm:gap-6 mt-6 sm:mt-8">
                                 <div className="text-center p-3 sm:p-4 bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700">
-                                    <div className="text-2xl sm:text-3xl font-bold text-blue-400">250+</div>
+                                    <div className="text-2xl sm:text-3xl font-bold text-blue-400">300+</div>
                                     <div className="text-sm sm:text-base text-gray-400">Problems Solved</div>
                                 </div>
                                 <div className="text-center p-3 sm:p-4 bg-gray-800/50 rounded-lg backdrop-blur-sm border border-gray-700">
-                                    <div className="text-2xl sm:text-3xl font-bold text-purple-400">5+</div>
+                                    <div className="text-2xl sm:text-3xl font-bold text-purple-400">7+</div>
                                     <div className="text-sm sm:text-base text-gray-400">Projects</div>
                                 </div>
                             </div>
@@ -954,7 +970,8 @@ const PortPolio = () => {
                         </motion.div>
                         {[
                             "Participated in regional rounds: Bangladesh Physics Olympiad & Bangladesh Math Olympiad",
-                            "Hackathon participant",
+                            "Participated in Microservices Architecture Hackathon",
+                            "Several Hackathon finalist",
                             "Member of Lions Club Chittagong"
                         ].map((item, index) => (
                             <motion.div
