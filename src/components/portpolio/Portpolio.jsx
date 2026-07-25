@@ -68,6 +68,8 @@ export default function Portpolio() {
   const [isHovered, setIsHovered] = useState(false);
   const [activeTab, setActiveTab] = useState('All');
   const [activeSection, setActiveSection] = useState('hero');
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [bootLines, setBootLines] = useState([]);
   
   const loaderRef = useRef(null);
   const canvasRef = useRef(null);
@@ -79,6 +81,39 @@ export default function Portpolio() {
   const mouseRef = useRef({ mx: 0, my: 0, rx: 0, ry: 0 });
   const dotRef = useRef(null);
   const ringRef = useRef(null);
+
+  // Holographic Loader Counter & Console Log
+  useEffect(() => {
+    let start = 0;
+    const end = 100;
+    const duration = 1600;
+    const range = end - start;
+    const increment = 1;
+    const stepTime = Math.abs(Math.floor(duration / range));
+
+    const timer = setInterval(() => {
+      start += increment;
+      setLoadingProgress(start);
+
+      if (start === 5) {
+        setBootLines(prev => [...prev, '> INITIALIZING INTERFACE SYSTEM...']);
+      } else if (start === 25) {
+        setBootLines(prev => [...prev, '> SYNAPSE DEPLOYED NOMINAL...']);
+      } else if (start === 50) {
+        setBootLines(prev => [...prev, '> LOADED ML NETWORKS & DEVOPS...']);
+      } else if (start === 75) {
+        setBootLines(prev => [...prev, '> PORTAL SECURITY MATRIX STABLE...']);
+      } else if (start === 95) {
+        setBootLines(prev => [...prev, '> FUTURISTIC PORTFOLIO ONLINE.']);
+      }
+
+      if (start >= end) {
+        clearInterval(timer);
+      }
+    }, stepTime);
+
+    return () => clearInterval(timer);
+  }, []);
 
   // 1. Initial Loader Fade Out and Hero Animation Trigger
   useEffect(() => {
@@ -397,8 +432,19 @@ export default function Portpolio() {
     <>
       {/* Loader */}
       <div className="loader" id="loader" ref={loaderRef}>
-        <div className="loader-text">INITIALIZING // SAA.2026</div>
-        <div className="loader-bar"></div>
+        <div className="loader-spinner">
+          <div className="spinner-ring outer"></div>
+          <div className="spinner-ring inner"></div>
+          <div className="spinner-core">{loadingProgress}%</div>
+        </div>
+        <div className="loader-text" style={{ letterSpacing: '4px', marginBottom: '8px' }}>
+          INITIALIZING // SAA.2026
+        </div>
+        <div className="loader-terminal">
+          {bootLines.slice(-3).map((line, idx) => (
+            <div key={idx} className="terminal-line">{line}</div>
+          ))}
+        </div>
       </div>
 
       {/* Custom cursor */}
