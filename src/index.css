@@ -1207,3 +1207,66 @@ footer {
     font-size: 10px;
   }
 }
+
+/* Card actions and buttons styling */
+.card-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  width: 100%;
+}
+
+.btn-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: none;
+  border: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.btn-card.primary {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  color: #000;
+  font-weight: 600;
+}
+
+.btn-card.primary:hover {
+  background: linear-gradient(120deg, var(--accent-2), var(--accent-3));
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.4);
+}
+
+.btn-card.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
+
+.btn-card.ghost:hover {
+  background: var(--glass);
+  border-color: var(--accent-2);
+  box-shadow: 0 0 15px rgba(0, 224, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .btn-card {
+    cursor: pointer;
+    padding: 10px 12px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

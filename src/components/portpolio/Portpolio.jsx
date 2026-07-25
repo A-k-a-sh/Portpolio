@@ -594,6 +594,14 @@ export default function Portpolio() {
                   <div className="lbl">Curiosity</div>
                 </div>
               </div>
+              <div className="card-actions">
+                <a href="/cv and resume/CV_Akash.pdf" download="CV_Akash.pdf" className="btn-card primary">
+                  <span>Download CV</span>
+                </a>
+                <a href="/cv and resume/cv_latex.pdf" download="CV_Akash_Resume.pdf" className="btn-card ghost">
+                  <span>Download Resume</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
