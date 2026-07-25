@@ -985,6 +985,13 @@ section {
   transition: all .4s;
 }
 
+.reveal{
+  display: flex;
+  justify-content: center; /* Horizontal */
+  align-items: center; 
+  
+}
+
 .ach:hover {
   border-color: var(--accent-2);
   transform: translateX(4px);
