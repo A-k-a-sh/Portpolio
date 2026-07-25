@@ -515,6 +515,20 @@ section {
 @media (max-width: 900px) {
   .about-grid {
     grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .stat .num {
+    font-size: 28px;
   }
 }
 
@@ -670,7 +684,7 @@ section {
 /* Projects */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 24px;
 }
 
@@ -688,6 +702,19 @@ section {
   flex-direction: column;
   justify-content: space-between;
   transform-style: preserve-3d;
+}
+
+@media (max-width: 768px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+  .project {
+    padding: 24px;
+    min-height: auto;
+  }
+  .project h3 {
+    font-size: 22px;
+  }
 }
 
 .project::before {
@@ -1130,7 +1157,17 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .project-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    width: 100%;
+  }
   .tab-btn {
     cursor: pointer;
+    padding: 8px 14px;
+    font-size: 10px;
   }
 }
