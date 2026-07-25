@@ -1034,15 +1034,8 @@ section {
   border: 1px solid var(--border);
   display: flex;
   gap: 16px;
-  align-items: flex-start;
+  align-items: center;
   transition: all .4s;
-}
-
-.reveal{
-  display: flex;
-  justify-content: center; /* Horizontal */
-  align-items: center; 
-  
 }
 
 .ach:hover {
