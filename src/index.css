@@ -278,11 +278,17 @@ nav .links a {
   font-family: 'JetBrains Mono', monospace;
   letter-spacing: 1px;
   text-transform: uppercase;
+  border: 1px solid transparent;
 }
 
-nav .links a:hover {
+nav .links a:hover, nav .links a.active {
   color: var(--ink);
   background: var(--glass);
+}
+
+nav .links a.active {
+  border-color: rgba(124, 92, 255, 0.4);
+  box-shadow: 0 0 10px rgba(124, 92, 255, 0.15);
 }
 
 /* Sections */

@@ -67,6 +67,7 @@ export default function Portpolio() {
   const [isLoading, setIsLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const [activeTab, setActiveTab] = useState('All');
+  const [activeSection, setActiveSection] = useState('hero');
   
   const loaderRef = useRef(null);
   const canvasRef = useRef(null);
@@ -110,6 +111,37 @@ export default function Portpolio() {
     gsap.fromTo('.hero-sub', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, delay: 0.8 });
     gsap.fromTo('.hero-cta', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, delay: 1 });
   };
+
+  // Scroll Spy Intersection Observer
+  useEffect(() => {
+    const sections = ['hero', 'about', 'skills', 'projects', 'research', 'education', 'contact'];
+    const observerOptions = {
+      root: null,
+      rootMargin: '-30% 0px -50% 0px',
+      threshold: 0.1
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.unobserve(el);
+      });
+    };
+  }, []);
 
   // 2. Custom Cursor Lerp Loop & Hover State Delegation
   useEffect(() => {
@@ -390,12 +422,12 @@ export default function Portpolio() {
       <nav>
         <div className="logo">SAA.</div>
         <div className="links">
-          <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About</a>
-          <a href="#skills" onClick={(e) => scrollToSection(e, 'skills')}>Skills</a>
-          <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')}>Work</a>
-          <a href="#research" onClick={(e) => scrollToSection(e, 'research')}>Research</a>
-          <a href="#education" onClick={(e) => scrollToSection(e, 'education')}>Journey</a>
-          <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a>
+          <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'about')}>About</a>
+          <a href="#skills" className={activeSection === 'skills' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'skills')}>Skills</a>
+          <a href="#projects" className={activeSection === 'projects' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'projects')}>Work</a>
+          <a href="#research" className={activeSection === 'research' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'research')}>Research</a>
+          <a href="#education" className={activeSection === 'education' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'education')}>Journey</a>
+          <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'contact')}>Contact</a>
         </div>
       </nav>
 
