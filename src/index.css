@@ -934,7 +934,7 @@ section {
   position: absolute;
   inset: 1px;
   border-radius: 15px;
-  background: rgba(10, 11, 20, 0.7);
+  background: rgba(10, 11, 20, 0.2);
   backdrop-filter: blur(20px);
 }
 
