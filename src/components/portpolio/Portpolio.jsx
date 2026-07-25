@@ -4,12 +4,75 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const projectsData = [
+  {
+    num: '01',
+    year: '2025 · ML / GENERATIVE',
+    title: 'Diffusion Model Fine-tuning (DDPM)',
+    desc: 'Fine-tuned pretrained DDPM UNet on a custom butterflies dataset. Implemented DDIM sampling, gradient accumulation, and torchvision preprocessing for improved efficiency and quality.',
+    tags: ['PyTorch', 'Hugging Face', 'DDPM', 'DDIM'],
+    category: 'ML'
+  },
+  {
+    num: '02',
+    year: '2025 · GANs',
+    title: 'DCGAN Face Generation (CelebA)',
+    desc: 'Built DCGAN to generate photorealistic faces from 200k+ CelebA images. Addressed mode collapse and training stability through architectural adjustments and regularization.',
+    tags: ['PyTorch', 'GANs', 'Deep Conv'],
+    category: 'ML'
+  },
+  {
+    num: '03',
+    year: '2024 · COMPUTER VISION',
+    title: 'Video Action Recognition (UCF101)',
+    desc: 'Implemented R(2+1)D model with transfer learning from Kinetics-400 on UCF101 dataset, achieving strong performance in temporal action classification.',
+    tags: ['PyTorch', 'R(2+1)D', 'OpenCV', '3D CNN'],
+    category: 'ML'
+  },
+  {
+    num: '04',
+    year: '2024 · HEALTHCARE ML',
+    title: 'Heart Disease Prediction System',
+    desc: 'Built and compared multiple classifiers on clinical data. Achieved 85–90% accuracy, providing reliable predictive insights for medical diagnostics.',
+    tags: ['scikit-learn', 'pandas', 'NumPy'],
+    category: 'ML'
+  },
+  {
+    num: '05',
+    year: '2024 · FULL-STACK',
+    title: 'E-Commerce Platform',
+    desc: 'Developed complete platform with product listing, cart, and checkout. Integrated SSLCommerz for secure payments and designed scalable REST APIs.',
+    tags: ['React', 'Node.js', 'MySQL', 'SSLCommerz'],
+    category: 'Devops/Fullstack'
+  },
+  {
+    num: '06',
+    year: '2023 · SOCIAL',
+    title: 'Social Media Web App',
+    desc: 'Built platform with user authentication, post creation, and infinite scrollable feeds. Leveraged Appwrite BaaS and TanStack Query for efficient caching and real-time updates.',
+    tags: ['React', 'Appwrite', 'TanStack'],
+    category: 'Devops/Fullstack'
+  },
+  {
+    num: '07',
+    year: '2023 · REAL-TIME',
+    title: 'Real-Time Messaging App',
+    desc: 'Developed robust chat app supporting one-on-one and group messaging. Implemented WebSocket communication via Socket.io for low-latency interactions.',
+    tags: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
+    category: 'Devops/Fullstack'
+  }
+];
+
 export default function Portpolio() {
   const [isLoading, setIsLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
+  const [activeTab, setActiveTab] = useState('All');
+  
   const loaderRef = useRef(null);
   const canvasRef = useRef(null);
   const heroRef = useRef(null);
+  const problemsRef = useRef(null);
+  const projectsRef = useRef(null);
 
   // Custom Cursor mouse coordinates
   const mouseRef = useRef({ mx: 0, my: 0, rx: 0, ry: 0 });
@@ -214,12 +277,39 @@ export default function Portpolio() {
           ease: 'power3.out'
         });
       });
+
+      // Stats Counter animation on scroll trigger
+      const statsObj = { problems: 0, projects: 0 };
+      gsap.to(statsObj, {
+        problems: 300,
+        projects: 7,
+        duration: 2,
+        ease: 'power1.out',
+        scrollTrigger: {
+          trigger: '#about',
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        },
+        onUpdate: () => {
+          if (problemsRef.current) {
+            problemsRef.current.innerText = Math.floor(statsObj.problems) + '+';
+          }
+          if (projectsRef.current) {
+            projectsRef.current.innerText = Math.floor(statsObj.projects) + '+';
+          }
+        }
+      });
     });
 
     return () => ctx.revert();
   }, []);
 
-  // 5. Hero Parallax on Mouse Move
+  // 5. Active Tab change triggers ScrollTrigger refresh
+  useEffect(() => {
+    ScrollTrigger.refresh();
+  }, [activeTab]);
+
+  // 6. Hero Parallax on Mouse Move
   const handleHeroMouseMove = (e) => {
     const x = (e.clientX / window.innerWidth - 0.5) * 20;
     const y = (e.clientY / window.innerHeight - 0.5) * 20;
@@ -227,7 +317,7 @@ export default function Portpolio() {
     gsap.to('.orb-2', { x: -x * 2, y: -y * 2, duration: 1 });
   };
 
-  // 6. Tilt Effect Handler
+  // 7. Tilt Effect Handler
   const handleTiltMouseMove = (e) => {
     const card = e.currentTarget;
     const r = card.getBoundingClientRect();
@@ -247,7 +337,7 @@ export default function Portpolio() {
     card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
   };
 
-  // 7. Magnetic Button Handler
+  // 8. Magnetic Button Handler
   const handleMagneticMouseMove = (e) => {
     const btn = e.currentTarget;
     const r = btn.getBoundingClientRect();
@@ -261,7 +351,7 @@ export default function Portpolio() {
     btn.style.transform = 'translate(0, 0)';
   };
 
-  // 8. Smooth Scrolling navigation clicks
+  // 9. Smooth Scrolling navigation clicks
   const scrollToSection = (e, id) => {
     e.preventDefault();
     const el = document.getElementById(id);
@@ -475,11 +565,11 @@ export default function Portpolio() {
               </p>
               <div className="about-stats">
                 <div className="stat">
-                  <div className="num">300+</div>
+                  <div className="num" ref={problemsRef}>0+</div>
                   <div className="lbl">Problems Solved</div>
                 </div>
                 <div className="stat">
-                  <div className="num">7+</div>
+                  <div className="num" ref={projectsRef}>0+</div>
                   <div className="lbl">Projects Shipped</div>
                 </div>
                 <div className="stat">
@@ -650,164 +740,53 @@ export default function Portpolio() {
               </h2>
             </div>
           </div>
+
+          {/* Project Filtering Tabs */}
+          <div className="project-tabs">
+            <button
+              className={`tab-btn ${activeTab === 'All' ? 'active' : ''}`}
+              onClick={() => setActiveTab('All')}
+            >
+              All
+            </button>
+            <button
+              className={`tab-btn ${activeTab === 'ML' ? 'active' : ''}`}
+              onClick={() => setActiveTab('ML')}
+            >
+              ML
+            </button>
+            <button
+              className={`tab-btn ${activeTab === 'Devops/Fullstack' ? 'active' : ''}`}
+              onClick={() => setActiveTab('Devops/Fullstack')}
+            >
+              Devops/Fullstack
+            </button>
+          </div>
+
           <div className="projects">
-            <div
-              className="project reveal tilt"
-              onMouseMove={handleTiltMouseMove}
-              onMouseLeave={handleTiltMouseLeave}
-            >
-              <div className="project-num">01</div>
-              <div>
-                <div className="project-year">2025 · ML / GENERATIVE</div>
-                <h3>Diffusion Model Fine-tuning (DDPM)</h3>
-                <p>
-                  Fine-tuned pretrained DDPM UNet on a custom butterflies dataset.
-                  Implemented DDIM sampling, gradient accumulation, and
-                  torchvision preprocessing for improved efficiency and quality.
-                </p>
-              </div>
-              <div className="project-tags">
-                <span>PyTorch</span>
-                <span>Hugging Face</span>
-                <span>DDPM</span>
-                <span>DDIM</span>
-              </div>
-            </div>
-
-            <div
-              className="project reveal tilt"
-              onMouseMove={handleTiltMouseMove}
-              onMouseLeave={handleTiltMouseLeave}
-            >
-              <div className="project-num">02</div>
-              <div>
-                <div className="project-year">2025 · GANs</div>
-                <h3>DCGAN Face Generation (CelebA)</h3>
-                <p>
-                  Built DCGAN to generate photorealistic faces from 200k+ CelebA
-                  images. Addressed mode collapse and training stability through
-                  architectural adjustments and regularization.
-                </p>
-              </div>
-              <div className="project-tags">
-                <span>PyTorch</span>
-                <span>GANs</span>
-                <span>Deep Conv</span>
-              </div>
-            </div>
-
-            <div
-              className="project reveal tilt"
-              onMouseMove={handleTiltMouseMove}
-              onMouseLeave={handleTiltMouseLeave}
-            >
-              <div className="project-num">03</div>
-              <div>
-                <div className="project-year">2024 · COMPUTER VISION</div>
-                <h3>Video Action Recognition (UCF101)</h3>
-                <p>
-                  Implemented R(2+1)D model with transfer learning from
-                  Kinetics-400 on UCF101 dataset, achieving strong performance
-                  in temporal action classification.
-                </p>
-              </div>
-              <div className="project-tags">
-                <span>PyTorch</span>
-                <span>R(2+1)D</span>
-                <span>OpenCV</span>
-                <span>3D CNN</span>
-              </div>
-            </div>
-
-            <div
-              className="project reveal tilt"
-              onMouseMove={handleTiltMouseMove}
-              onMouseLeave={handleTiltMouseLeave}
-            >
-              <div className="project-num">04</div>
-              <div>
-                <div className="project-year">2024 · HEALTHCARE ML</div>
-                <h3>Heart Disease Prediction System</h3>
-                <p>
-                  Built and compared multiple classifiers on clinical data.
-                  Achieved 85–90% accuracy, providing reliable predictive insights
-                  for medical diagnostics.
-                </p>
-              </div>
-              <div className="project-tags">
-                <span>scikit-learn</span>
-                <span>pandas</span>
-                <span>NumPy</span>
-              </div>
-            </div>
-
-            <div
-              className="project reveal tilt"
-              onMouseMove={handleTiltMouseMove}
-              onMouseLeave={handleTiltMouseLeave}
-            >
-              <div className="project-num">05</div>
-              <div>
-                <div className="project-year">2024 · FULL-STACK</div>
-                <h3>E-Commerce Platform</h3>
-                <p>
-                  Developed complete platform with product listing, cart, and
-                  checkout. Integrated SSLCommerz for secure payments and designed
-                  scalable REST APIs.
-                </p>
-              </div>
-              <div className="project-tags">
-                <span>React</span>
-                <span>Node.js</span>
-                <span>MySQL</span>
-                <span>SSLCommerz</span>
-              </div>
-            </div>
-
-            <div
-              className="project reveal tilt"
-              onMouseMove={handleTiltMouseMove}
-              onMouseLeave={handleTiltMouseLeave}
-            >
-              <div className="project-num">06</div>
-              <div>
-                <div className="project-year">2023 · SOCIAL</div>
-                <h3>Social Media Web App</h3>
-                <p>
-                  Built platform with user authentication, post creation, and
-                  infinite scrollable feeds. Leveraged Appwrite BaaS and
-                  TanStack Query for efficient caching and real-time updates.
-                </p>
-              </div>
-              <div className="project-tags">
-                <span>React</span>
-                <span>Appwrite</span>
-                <span>TanStack</span>
-              </div>
-            </div>
-
-            <div
-              className="project reveal tilt"
-              onMouseMove={handleTiltMouseMove}
-              onMouseLeave={handleTiltMouseLeave}
-            >
-              <div className="project-num">07</div>
-              <div>
-                <div className="project-year">2023 · REAL-TIME</div>
-                <h3>Real-Time Messaging App</h3>
-                <p>
-                  Developed robust chat app supporting one-on-one and group
-                  messaging. Implemented WebSocket communication via Socket.io
-                  for low-latency interactions.
-                </p>
-              </div>
-              <div className="project-tags">
-                <span>React</span>
-                <span>Node.js</span>
-                <span>Socket.io</span>
-                <span>MongoDB</span>
-              </div>
-            </div>
+            {projectsData.map((p) => {
+              const isHidden = activeTab !== 'All' && p.category !== activeTab;
+              return (
+                <div
+                  key={p.num}
+                  className={`project reveal tilt ${isHidden ? 'hide' : ''}`}
+                  onMouseMove={handleTiltMouseMove}
+                  onMouseLeave={handleTiltMouseLeave}
+                >
+                  <div className="project-num">{p.num}</div>
+                  <div>
+                    <div className="project-year">{p.year}</div>
+                    <h3>{p.title}</h3>
+                    <p>{p.desc}</p>
+                  </div>
+                  <div className="project-tags">
+                    {p.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -1082,3 +1082,49 @@ footer {
     cursor: pointer;
   }
 }
+
+/* Project Tabs filtering */
+.project-tabs {
+  display: inline-flex;
+  gap: 8px;
+  padding: 6px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  margin-bottom: 48px;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-radius: 100px;
+  cursor: none;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.tab-btn:hover {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tab-btn.active {
+  color: #000;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  font-weight: 600;
+}
+
+.project.hide {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .tab-btn {
+    cursor: pointer;
+  }
+}
