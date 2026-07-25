@@ -522,10 +522,25 @@ section {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .about-text p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .card-name {
+    font-size: 22px;
+  }
+  .stat {
+    padding: 12px;
+  }
+  .about-stats {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 576px) {
   .about-stats {
     grid-template-columns: 1fr;
-    gap: 12px;
   }
   .stat .num {
     font-size: 28px;
@@ -566,6 +581,27 @@ section {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+}
+
+.card-sys {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent-2);
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.card-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.card-sub {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
 .about-stats {

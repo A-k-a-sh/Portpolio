@@ -351,6 +351,7 @@ export default function Portpolio() {
 
   // 7. Tilt Effect Handler
   const handleTiltMouseMove = (e) => {
+    if (window.innerWidth <= 768) return;
     const card = e.currentTarget;
     const r = card.getBoundingClientRect();
     const x = e.clientX - r.left;
@@ -572,29 +573,9 @@ export default function Portpolio() {
               onMouseMove={handleTiltMouseMove}
               onMouseLeave={handleTiltMouseLeave}
             >
-              <div
-                style={{
-                  fontFamily: "'JetBrains Mono',monospace",
-                  fontSize: '11px',
-                  color: 'var(--accent-2)',
-                  letterSpacing: '2px',
-                  marginBottom: '16px'
-                }}
-              >
-                // PROFILE.SYS
-              </div>
-              <h3
-                style={{
-                  fontFamily: "'Space Grotesk',sans-serif",
-                  fontSize: '28px',
-                  marginBottom: '8px'
-                }}
-              >
-                Shahad Abir Akash
-              </h3>
-              <p style={{ color: 'var(--muted)', fontSize: '14px', marginBottom: '20px' }}>
-                CS Undergrad · CUET
-              </p>
+              <div className="card-sys">// PROFILE.SYS</div>
+              <h3 className="card-name">Shahad Abir Akash</h3>
+              <p className="card-sub">CS Undergrad · CUET</p>
               <div className="about-stats">
                 <div className="stat">
                   <div className="num" ref={problemsRef}>0+</div>
