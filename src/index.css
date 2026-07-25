@@ -934,7 +934,8 @@ section {
   position: absolute;
   inset: 1px;
   border-radius: 15px;
-  background: var(--bg-2);
+  background: rgba(10, 11, 20, 0.7);
+  backdrop-filter: blur(20px);
 }
 
 .research-item > * {
