@@ -1061,11 +1061,17 @@ export default function Portpolio() {
               ✉ u2104035@student.cuet.ac.bd
             </a>
             <a href="tel:+8801828511380">☏ +880 18285 11380</a>
-            <a href="https://abirakash.com" target="_blank" rel="noreferrer">
-              ◈ abirakash.com
+            <a href="https://portpolio-eight-smoky.vercel.app" target="_blank" rel="noreferrer">
+              ◈ portpolio-eight-smoky.vercel.app
+            </a>
+            <a href="https://github.com/A-k-a-sh" target="_blank" rel="noreferrer">
+              ⎇ github.com/A-k-a-sh
+            </a>
+            <a href="https://linkedin.com/in/abir-akash-564360334" target="_blank" rel="noreferrer">
+              ✦ linkedin.com/in/abir-akash-564360334
             </a>
             <a href="#hero" onClick={(e) => scrollToSection(e, 'hero')}>
-              ⌘ Chittagong, BD
+              ⌘ Chittagong, Bangladesh
             </a>
           </div>
         </div>
