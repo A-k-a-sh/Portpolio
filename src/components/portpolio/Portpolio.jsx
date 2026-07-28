@@ -7,58 +7,50 @@ gsap.registerPlugin(ScrollTrigger);
 const projectsData = [
   {
     num: '01',
-    year: '2025 · ML / GENERATIVE',
-    title: 'Diffusion Model Fine-tuning (DDPM)',
-    desc: 'Fine-tuned pretrained DDPM UNet on a custom butterflies dataset. Implemented DDIM sampling, gradient accumulation, and torchvision preprocessing for improved efficiency and quality.',
-    tags: ['PyTorch', 'Hugging Face', 'DDPM', 'DDIM'],
+    year: '2025 · GENERATIVE AI / ML',
+    title: 'Stable Diffusion Style Transfer & LoRA Fine-Tuning',
+    desc: 'Trained LoRA adapters on Stable Diffusion v1.5 across 800 paintings from 4 classical artists (van Gogh, Matisse, Picasso, Rembrandt). Built an image-to-image stylization pipeline transferring learned classical aesthetics onto anime face inputs while preserving facial structure.',
+    tags: ['PyTorch', 'Diffusers', 'PEFT LoRA', 'Accelerate', 'Hugging Face'],
     category: 'ML'
   },
   {
     num: '02',
-    year: '2025 · GANs',
-    title: 'DCGAN Face Generation (CelebA)',
-    desc: 'Built DCGAN to generate photorealistic faces from 200k+ CelebA images. Addressed mode collapse and training stability through architectural adjustments and regularization.',
-    tags: ['PyTorch', 'GANs', 'Deep Conv'],
+    year: '2025 · NLP / RAG',
+    title: 'Bangla Hybrid RAG Pipeline',
+    desc: 'Built a Retrieval-Augmented Generation system over 169K+ Bangla Wikipedia articles (~830K overlapping chunks). Implemented hybrid retrieval combining BM25 lexical search and FAISS dense vector search with CrossEncoder re-ranking.',
+    tags: ['Python', 'FAISS', 'BM25', 'multilingual-e5', 'BGE Reranker'],
     category: 'ML'
   },
   {
     num: '03',
     year: '2024 · COMPUTER VISION',
     title: 'Video Action Recognition (UCF101)',
-    desc: 'Implemented R(2+1)D model with transfer learning from Kinetics-400 on UCF101 dataset, achieving strong performance in temporal action classification.',
-    tags: ['PyTorch', 'R(2+1)D', 'OpenCV', '3D CNN'],
+    desc: 'Implemented a spatiotemporal action recognition model using R(2+1)D CNN factorized 3D convolutions on the UCF101 benchmark. Applied transfer learning from Kinetics-400 pretrained weights and built frame extraction pipeline.',
+    tags: ['PyTorch', 'R(2+1)D CNN', 'OpenCV', '3D Convolutions'],
     category: 'ML'
   },
   {
     num: '04',
-    year: '2024 · HEALTHCARE ML',
-    title: 'Heart Disease Prediction System',
-    desc: 'Built and compared multiple classifiers on clinical data. Achieved 85–90% accuracy, providing reliable predictive insights for medical diagnostics.',
-    tags: ['scikit-learn', 'pandas', 'NumPy'],
-    category: 'ML'
+    year: '2025 · FULL-STACK / AI',
+    title: 'KrishiNexus — Agri Supply Chain & Climate Alerts',
+    desc: 'Developed a mission-control dashboard for agricultural supply chain management and climate risk alerting. Built a 3-Stage RAG advisory engine using Gemini 2.5 Flash and Atlas Vector Search, injecting BAMIS bulletins.',
+    tags: ['React', 'Node.js', 'MongoDB Atlas', 'Gemini API', 'Open-Meteo'],
+    category: 'Devops/Fullstack'
   },
   {
     num: '05',
-    year: '2024 · FULL-STACK',
-    title: 'E-Commerce Platform',
-    desc: 'Developed complete platform with product listing, cart, and checkout. Integrated SSLCommerz for secure payments and designed scalable REST APIs.',
-    tags: ['React', 'Node.js', 'MySQL', 'SSLCommerz'],
+    year: '2025 · MICROSERVICES / HACKATHON',
+    title: 'CareForAll — Donation Platform',
+    desc: 'Re-engineered a legacy donation platform into a microservices architecture (Top 10, Hackathon 2025). Implemented Transactional Outbox Pattern and Redis-based idempotency keys, with Prometheus, Grafana, and ELK observability.',
+    tags: ['Node.js', 'Redis', 'Docker Compose', 'ELK Stack', 'Prometheus'],
     category: 'Devops/Fullstack'
   },
   {
     num: '06',
-    year: '2023 · SOCIAL',
-    title: 'Social Media Web App',
-    desc: 'Built platform with user authentication, post creation, and infinite scrollable feeds. Leveraged Appwrite BaaS and TanStack Query for efficient caching and real-time updates.',
-    tags: ['React', 'Appwrite', 'TanStack'],
-    category: 'Devops/Fullstack'
-  },
-  {
-    num: '07',
-    year: '2023 · REAL-TIME',
-    title: 'Real-Time Messaging App',
-    desc: 'Developed robust chat app supporting one-on-one and group messaging. Implemented WebSocket communication via Socket.io for low-latency interactions.',
-    tags: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
+    year: '2025 · FULL-STACK MERN',
+    title: 'CodeLens — AI Code Complexity Analyzer',
+    desc: 'Built a full-stack MERN platform for code complexity analysis and developer knowledge sharing. Integrated Google Gemini API to analyze code and provide Big O complexity estimates with structural reasoning.',
+    tags: ['MongoDB', 'React', 'Node.js', 'Gemini API', 'CodeMirror'],
     category: 'Devops/Fullstack'
   }
 ];
@@ -149,7 +141,7 @@ export default function Portpolio() {
 
   // Scroll Spy Intersection Observer
   useEffect(() => {
-    const sections = ['hero', 'about', 'skills', 'projects', 'research', 'education', 'contact'];
+    const sections = ['hero', 'about', 'skills', 'projects', 'publications', 'research', 'education', 'contact'];
     const observerOptions = {
       root: null,
       rootMargin: '-30% 0px -50% 0px',
@@ -472,6 +464,7 @@ export default function Portpolio() {
           <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'about')}>About</a>
           <a href="#skills" className={activeSection === 'skills' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'skills')}>Skills</a>
           <a href="#projects" className={activeSection === 'projects' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'projects')}>Work</a>
+          <a href="#publications" className={activeSection === 'publications' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'publications')}>Publications</a>
           <a href="#research" className={activeSection === 'research' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'research')}>Research</a>
           <a href="#education" className={activeSection === 'education' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'education')}>Journey</a>
           <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => scrollToSection(e, 'contact')}>Contact</a>
@@ -595,18 +588,18 @@ export default function Portpolio() {
             <div className="about-text reveal">
               <p>
                 I'm a <strong>motivated Computer Science undergraduate</strong> at
-                Chittagong University of Engineering & Technology with a passion
-                for building systems that scale. From real-time chat apps to
-                diffusion-based image synthesis, I love working at the
-                intersection of <strong>engineering and research</strong>.
+                Chittagong University of Engineering & Technology (CUET) with a passion
+                for building systems that scale and academic research in NLP/ML. I have
+                authored a publication at <strong>ACL 2026</strong> (Rank 1 Malayalam Subtask)
+                focusing on multimodal political meme classification.
               </p>
               <p>
                 My toolkit spans the full stack —{' '}
-                <strong>React, Node.js, Socket.io</strong> for blazing-fast web
-                apps; <strong>PyTorch & scikit-learn</strong> for ML pipelines;
-                and <strong>Docker, Nginx, CI/CD</strong> for cloud-native
+                <strong>React, Node.js, Socket.io</strong> for real-time web applications;
+                <strong>PyTorch, Diffusers, and NLP models</strong> for ML research and pipeline fine-tuning;
+                and <strong>Docker, Nginx, and observability tools</strong> for cloud-native
                 deployments. I'm currently exploring{' '}
-                <strong>generative models, LLMs, and distributed systems</strong>.
+                <strong>generative AI, RAG pipelines, and microservices</strong>.
               </p>
               <p>
                 When I'm not coding, you'll find me solving LeetCode puzzles,
@@ -858,12 +851,56 @@ export default function Portpolio() {
         </div>
       </section>
 
+      {/* Publications Section */}
+      <section id="publications">
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <div className="section-num">// 04 — PUBLICATIONS</div>
+              <h2 className="section-title">
+                Academic <span className="grad">Papers</span>.
+              </h2>
+            </div>
+          </div>
+          <div
+            className="publication-card reveal tilt"
+            onMouseMove={handleTiltMouseMove}
+            onMouseLeave={handleTiltMouseLeave}
+          >
+            <div className="pub-badge">ACL 2026</div>
+            <div className="pub-main">
+              <span className="pub-venue">Conference Paper · Association for Computational Linguistics</span>
+              <h3>CYBERPUNK@DravidianLangTech 2026: Multimodal Political Meme Classification using CLIP and Logo Similarity</h3>
+              <div className="pub-authors">
+                <strong>Shahad Abir</strong>
+              </div>
+              <p>
+                Published at the Sixth Workshop on Speech, Vision, and Language Technologies for Dravidian Languages @ ACL 2026.
+                Achieved <strong>Rank 1</strong> in Malayalam Subtask (F1: 0.9638) and Rank 6 in Tamil Subtask (F1: 0.9271).
+                Developed a multimodal classification system combining CLIP visual embeddings, facial attribute detection, and political party logo similarity features.
+              </p>
+              <div className="pub-actions">
+                <a
+                  href="https://doi.org/10.18653/v1/2026.dravidianlangtech-1.31"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-card primary"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <span>View Paper (DOI)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Research Section */}
       <section id="research">
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="section-num">// 04 — RESEARCH INTERESTS</div>
+              <div className="section-num">// 05 — RESEARCH INTERESTS</div>
               <h2 className="section-title">
                 What I'm <span className="grad">exploring</span>.
               </h2>
@@ -878,10 +915,9 @@ export default function Portpolio() {
               </p>
             </div>
             <div className="research-item reveal">
-              <h4>Large Language Models</h4>
+              <h4>Model Optimization</h4>
               <p>
-                Training, fine-tuning, and optimization techniques for modern LLM
-                architectures.
+                Machine learning systems, transfer learning, and model optimization techniques.
               </p>
             </div>
             <div className="research-item reveal">
@@ -892,6 +928,12 @@ export default function Portpolio() {
               </p>
             </div>
             <div className="research-item reveal">
+              <h4>Video Understanding</h4>
+              <p>
+                Video action recognition, spatiotemporal convolutions, and representation learning for video analysis.
+              </p>
+            </div>
+            <div className="research-item reveal">
               <h4>Cloud-Native Apps</h4>
               <p>
                 Microservices, containerization, and resilient cloud-native
@@ -899,17 +941,9 @@ export default function Portpolio() {
               </p>
             </div>
             <div className="research-item reveal">
-              <h4>DevOps Architecture</h4>
+              <h4>DevOps & CI/CD</h4>
               <p>
-                CI/CD pipelines, observability, and infrastructure as code for
-                production systems.
-              </p>
-            </div>
-            <div className="research-item reveal">
-              <h4>Algorithms & DS</h4>
-              <p>
-                Advanced data structures, competitive programming, and
-                algorithmic problem solving.
+                CI/CD pipelines, observability stack setup (Prometheus, Grafana, ELK), and infrastructure as code.
               </p>
             </div>
           </div>
@@ -921,7 +955,7 @@ export default function Portpolio() {
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="section-num">// 05 — JOURNEY</div>
+              <div className="section-num">// 06 — JOURNEY</div>
               <h2 className="section-title">
                 The <span className="grad">path</span>.
               </h2>
@@ -968,7 +1002,7 @@ export default function Portpolio() {
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="section-num">// 06 — RECOGNITION</div>
+              <div className="section-num">// 07 — RECOGNITION</div>
               <h2 className="section-title">
                 Milestones & <span className="grad">wins</span>.
               </h2>
@@ -976,38 +1010,32 @@ export default function Portpolio() {
           </div>
           <div className="achievements">
             <div className="ach reveal">
-              <div className="ic">⚡</div>
-              <p>
-                Solved <strong style={{ color: 'var(--ink)' }}>300+ problems</strong>{' '}
-                on LeetCode and other online platforms.
-              </p>
-            </div>
-            <div className="ach reveal">
               <div className="ic">🏆</div>
               <p>
-                Participated in regional{' '}
-                <strong style={{ color: 'var(--ink)' }}>
-                  Bangladesh Physics & Math Olympiad
-                </strong>
-                .
+                <strong>1st Place</strong> — CUET Workshop Hackathon (ft. Mysoftheaven Ltd) — built 4 complete applications in 1 hour.
               </p>
             </div>
             <div className="ach reveal">
-              <div className="ic">⚙</div>
+              <div className="ic">⚡</div>
               <p>
-                Microservices Architecture{' '}
-                <strong style={{ color: 'var(--ink)' }}>
-                  Hackathon participant
-                </strong>
-                .
+                <strong>Top 10</strong> — CUET Micro Ops Hackathon 2025 (Team DevsOfOlympus) — microservices architecture competition.
               </p>
             </div>
             <div className="ach reveal">
               <div className="ic">🎯</div>
               <p>
-                Multiple{' '}
-                <strong style={{ color: 'var(--ink)' }}>hackathon finalist</strong>{' '}
-                across various domains.
+                Solved <strong style={{ color: 'var(--ink)' }}>300+ problems</strong>{' '}
+                on LeetCode and other competitive programming platforms.
+              </p>
+            </div>
+            <div className="ach reveal">
+              <div className="ic">⭐</div>
+              <p>
+                Regional Olympiad Participant in the{' '}
+                <strong style={{ color: 'var(--ink)' }}>
+                  Bangladesh Physics & Math Olympiad
+                </strong>
+                .
               </p>
             </div>
             <div className="ach reveal">
@@ -1017,13 +1045,13 @@ export default function Portpolio() {
                 <strong style={{ color: 'var(--ink)' }}>
                   Lions Club Chittagong
                 </strong>{' '}
-                — community service & outreach.
+                — contributing to community service.
               </p>
             </div>
             <div className="ach reveal">
               <div className="ic">✦</div>
               <p>
-                Maintainer of multiple{' '}
+                Maintainer and contributor to multiple{' '}
                 <strong style={{ color: 'var(--ink)' }}>open-source</strong> GitHub
                 repositories.
               </p>
@@ -1036,7 +1064,7 @@ export default function Portpolio() {
       <section className="contact" id="contact">
         <div className="container">
           <div className="section-num" style={{ textAlign: 'center', marginBottom: '20px' }}>
-            // 07 — LET'S CONNECT
+            // 08 — LET'S CONNECT
           </div>
           <h2>
             Got a wild idea?
