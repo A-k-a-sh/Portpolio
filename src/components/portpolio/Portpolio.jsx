@@ -599,8 +599,8 @@ export default function Portpolio() {
                 I'm a <strong>motivated Computer Science undergraduate</strong> at
                 Chittagong University of Engineering & Technology (CUET) with a passion
                 for building systems that scale and academic research in NLP/ML. I have
-                authored publications at <strong>ACL 2026</strong> (Rank 1 Malayalam Subtask)
-                and <strong>IEEE OMLET 2026</strong> (Accepted with Minor Revision, Scopus/IEEE Xplore)
+                authored publications at <strong>ACL 2026</strong> (Sole Author, Rank 1 Malayalam Subtask)
+                and <strong>IEEE OMLET 2026</strong> (First Author, IEEE Xplore & Scopus)
                 focusing on multimodal deep learning and latent space oversampling.
               </p>
               <p>
@@ -916,7 +916,7 @@ export default function Portpolio() {
               <span className="pub-venue">Conference Paper · Association for Computational Linguistics</span>
               <h3>CYBERPUNK@DravidianLangTech 2026: Multimodal Political Meme Classification using CLIP and Logo Similarity</h3>
               <div className="pub-authors">
-                <strong>Shahad Abir</strong>
+                <strong>Shahad Abir</strong> (Sole Author)
               </div>
               <p>
                 Published at the Sixth Workshop on Speech, Vision, and Language Technologies for Dravidian Languages @ ACL 2026.
@@ -947,10 +947,10 @@ export default function Portpolio() {
               <span className="pub-venue">Conference Paper · IEEE OMLET 2026 (IEEE Xplore & Scopus Indexed)</span>
               <h3>PCA-SMOTE: Diagnosing and Correcting Synthetic Overfitting in Deep Latent Space Oversampling for Imbalanced Image Classification</h3>
               <div className="pub-authors">
-                <strong>Shahad Abir</strong>, Shahriar Khaled Fahim, Abdullah Mohammed Asif, Piash Islam, Mahfuzulhoq Chowdhury
+                <strong>Shahad Abir</strong> (First Author) et al.
               </div>
               <p>
-                Accepted with Minor Revision at IEEE OMLET 2026 for inclusion in IEEE Xplore Digital Library and Scopus indexing.
+                Accepted at IEEE OMLET 2026 for publication and inclusion in IEEE Xplore Digital Library & Scopus indexing.
                 Diagnosed synthetic overfitting and the FID-accuracy decoupling in deep latent space oversampling (DeepSMOTE) under extreme class imbalance (up to 100:1).
                 Formulated PCA-SMOTE, combining PCA subspace interpolation with a bounded target heuristic (5x–6x capping) to eliminate high-dimensional noise and achieve statistically significant classification gains on imbalanced MNIST and CIFAR-10.
               </p>
@@ -980,7 +980,7 @@ export default function Portpolio() {
                       boxShadow: '0 0 10px #00e0ff'
                     }}
                   />
-                  Accepted with Minor Revision · IEEE Xplore & Scopus
+                  Accepted · IEEE Xplore & Scopus
                 </span>
               </div>
             </div>
