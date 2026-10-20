@@ -599,8 +599,9 @@ export default function Portpolio() {
                 I'm a <strong>motivated Computer Science undergraduate</strong> at
                 Chittagong University of Engineering & Technology (CUET) with a passion
                 for building systems that scale and academic research in NLP/ML. I have
-                authored a publication at <strong>ACL 2026</strong> (Rank 1 Malayalam Subtask)
-                focusing on multimodal political meme classification.
+                authored publications at <strong>ACL 2026</strong> (Rank 1 Malayalam Subtask)
+                and <strong>IEEE OMLET 2026</strong> (Accepted with Minor Revision, Scopus/IEEE Xplore)
+                focusing on multimodal deep learning and latent space oversampling.
               </p>
               <p>
                 My toolkit spans the full stack —{' '}
@@ -935,6 +936,55 @@ export default function Portpolio() {
               </div>
             </div>
           </div>
+
+          <div
+            className="publication-card reveal tilt"
+            onMouseMove={handleTiltMouseMove}
+            onMouseLeave={handleTiltMouseLeave}
+          >
+            <div className="pub-badge">IEEE 2026</div>
+            <div className="pub-main">
+              <span className="pub-venue">Conference Paper · IEEE OMLET 2026 (IEEE Xplore & Scopus Indexed)</span>
+              <h3>PCA-SMOTE: Diagnosing and Correcting Synthetic Overfitting in Deep Latent Space Oversampling for Imbalanced Image Classification</h3>
+              <div className="pub-authors">
+                <strong>Shahad Abir</strong>, Shahriar Khaled Fahim, Abdullah Mohammed Asif, Piash Islam, Mahfuzulhoq Chowdhury
+              </div>
+              <p>
+                Accepted with Minor Revision at IEEE OMLET 2026 for inclusion in IEEE Xplore Digital Library and Scopus indexing.
+                Diagnosed synthetic overfitting and the FID-accuracy decoupling in deep latent space oversampling (DeepSMOTE) under extreme class imbalance (up to 100:1).
+                Formulated PCA-SMOTE, combining PCA subspace interpolation with a bounded target heuristic (5x–6x capping) to eliminate high-dimensional noise and achieve statistically significant classification gains on imbalanced MNIST and CIFAR-10.
+              </p>
+              <div className="pub-actions">
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '10px 18px',
+                    borderRadius: '12px',
+                    background: 'rgba(0, 224, 255, 0.08)',
+                    border: '1px solid rgba(0, 224, 255, 0.25)',
+                    color: 'var(--accent-2)',
+                    fontSize: '13px',
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontWeight: 600,
+                    letterSpacing: '0.5px'
+                  }}
+                >
+                  <span
+                    style={{
+                      width: '8px',
+                      height: '8px',
+                      borderRadius: '50%',
+                      background: '#00e0ff',
+                      boxShadow: '0 0 10px #00e0ff'
+                    }}
+                  />
+                  Accepted with Minor Revision · IEEE Xplore & Scopus
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -958,9 +1008,10 @@ export default function Portpolio() {
               </p>
             </div>
             <div className="research-item reveal">
-              <h4>Model Optimization</h4>
+              <h4>Latent Space & Imbalanced Learning</h4>
               <p>
-                Machine learning systems, transfer learning, and model optimization techniques.
+                Deep latent space oversampling (PCA-SMOTE), subspace interpolation,
+                and addressing synthetic overfitting under extreme class imbalance.
               </p>
             </div>
             <div className="research-item reveal">
