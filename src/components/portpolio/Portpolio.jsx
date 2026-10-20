@@ -31,6 +31,15 @@ const projectsData = [
   },
   {
     num: '04',
+    year: '2024 · COMPUTER VISION / DL',
+    title: 'Facial Emotion Detection (Real-time)',
+    desc: 'Built an end-to-end deep learning system for real-time facial emotion recognition across 7 categories using a custom CNN in PyTorch with data augmentation and regularization. Integrated an OpenCV webcam pipeline for live multi-face detection and emotion inference.',
+    tags: ['PyTorch', 'OpenCV', 'CNN', 'torchvision', 'Real-time'],
+    category: 'ML',
+    link: 'https://note-book-share.vercel.app/#/https://github.com/A-k-a-sh/ML-DL-Projects/blob/main/Deep%20learning/Emotion%20detection/Facial_emotion_detection_real_time.ipynb'
+  },
+  {
+    num: '05',
     year: '2025 · FULL-STACK / AI',
     title: 'KrishiNexus — Agri Supply Chain & Climate Alerts',
     desc: 'Developed a mission-control dashboard for agricultural supply chain management and climate risk alerting. Built a 3-Stage RAG advisory engine using Gemini 2.5 Flash and Atlas Vector Search, injecting BAMIS bulletins.',
@@ -38,7 +47,7 @@ const projectsData = [
     category: 'Devops/Fullstack'
   },
   {
-    num: '05',
+    num: '06',
     year: '2025 · MICROSERVICES / HACKATHON',
     title: 'CareForAll — Donation Platform',
     desc: 'Re-engineered a legacy donation platform into a microservices architecture (Top 10, Hackathon 2025). Implemented Transactional Outbox Pattern and Redis-based idempotency keys, with Prometheus, Grafana, and ELK observability.',
@@ -46,7 +55,7 @@ const projectsData = [
     category: 'Devops/Fullstack'
   },
   {
-    num: '06',
+    num: '07',
     year: '2025 · FULL-STACK MERN',
     title: 'CodeLens — AI Code Complexity Analyzer',
     desc: 'Built a full-stack MERN platform for code complexity analysis and developer knowledge sharing. Integrated Google Gemini API to analyze code and provide Big O complexity estimates with structural reasoning.',
@@ -836,7 +845,41 @@ export default function Portpolio() {
                   <div className="project-num">{p.num}</div>
                   <div>
                     <div className="project-year">{p.year}</div>
-                    <h3>{p.title}</h3>
+                    <h3>
+                      {p.link ? (
+                        <a
+                          href={p.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            color: 'inherit',
+                            textDecoration: 'none',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '8px'
+                          }}
+                        >
+                          {p.title}
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            style={{ opacity: 0.6, flexShrink: 0 }}
+                          >
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                          </svg>
+                        </a>
+                      ) : (
+                        p.title
+                      )}
+                    </h3>
                     <p>{p.desc}</p>
                   </div>
                   <div className="project-tags">
