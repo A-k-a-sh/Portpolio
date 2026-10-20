@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e0ff" />
+      <stop offset="100%" stop-color="#7c5cff" />
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e0ff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#7c5cff" stop-opacity="0.8" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#08090d" stroke="url(#borderGrad)" stroke-width="2" />
+  <path d="M32 14 L46 48 L38.5 48 L34.5 38 L29.5 38 L25.5 48 L18 48 Z M32 23.5 L29.8 33 L34.2 33 Z" fill="url(#grad1)" filter="url(#glow)" />
+  <circle cx="32" cy="45" r="2" fill="#00e0ff" filter="url(#glow)" />
+</svg>
